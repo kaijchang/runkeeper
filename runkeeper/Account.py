@@ -8,6 +8,7 @@ from .User import User
 
 import typing
 
+
 class Account(User):
     def __init__(self, email: str, password: str):
         self.session = requests.Session()
@@ -56,7 +57,7 @@ class Account(User):
         """
         Example Return:
         {2020: {1: 10, 2: 11, 3: 15}}
-        10 activities in January 2020, 11 in February 2020, and 15 in March 2020
+        this would mean 10 activities in January 2020, 11 in February 2020, and 15 in March 2020
 
         :return: number of activities for each month with at least one activity
         :rtype: dict
