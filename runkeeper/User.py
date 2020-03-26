@@ -99,7 +99,7 @@ class User:
 
         return data
 
-    def get_trip_point_data(self, trip_uuid: str) -> typing.Dict[str, typing.Union[str, dict]]:
+    def get_trip_point_data(self, trip_uuid: str) -> typing.Optional[typing.Dict[str, typing.Union[str, dict]]]:
         """
         :param trip_uuid: trip to get point data for
         :type trip_uuid: str
@@ -112,5 +112,9 @@ class User:
 
         if point_data_request.status_code == 403:
             _throw_perm_error()
+
+        if point_data_request.status_code == 400:
+            # no trip points (activity entered manually)
+            return None
 
         return point_data_request.json()
