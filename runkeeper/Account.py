@@ -10,11 +10,10 @@ class Account(User):
     def __init__(self, email: str, password: str):
         session = requests.Session()
 
-        landing_page = BeautifulSoup(session.get('https://runkeeper.com').text, 'html.parser')
-        login_query_string = parse.parse_qs(
-            parse.urlparse(landing_page.find(class_='log-in').find('a')['href'][27:-2]).query)
+        login_request = session.get('https://runkeeper.com/login')
+        login_query_string = parse.parse_qs(parse.urlparse(login_request.url).query)
 
-        state = login_query_string['state']
+        state = login_query_string['state'][0]
 
         session.post('https://id.asics.com/oauth2/token/auth', data={
             'username': email,
