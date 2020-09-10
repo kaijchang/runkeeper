@@ -4,7 +4,7 @@ import os
 setup(
     name='runkeeper',
     packages=['runkeeper'],
-    version='0.1.1',
+    version='0.1.2',
     description='Unofficial Python API Client for Runkeeper',
     author='Kai Chang',
     url='https://github.com/kajchang/runkeeper',
